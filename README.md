@@ -29,7 +29,25 @@ Entre os detalhes visuais desenvolvidos estão as cerejas conectadas pelo cabinh
 
 **Resultado:** modelos-base principais criados e disponíveis como referências visuais para desenvolver os personagens das histórias. A próxima fase poderá definir nomes, personalidades, figurinos e papéis narrativos, usando as imagens-base para orientar a consistência visual entre cenas.
 
-Este registro documenta o marco de criação; as imagens dos modelos não foram adicionadas ao repositório nesta atualização.
+### Galeria dos modelos-base
+
+Visão geral dos modelos criados, conforme as imagens compartilhadas em 17/10/2026. Clique em uma imagem para abri-la em tamanho completo.
+
+**Painel 1**
+
+[![Modelos-base de personagens-fruta — painel 1](docs/imagens/modelos-base/painel-01.png)](docs/imagens/modelos-base/painel-01.png)
+
+**Painel 2**
+
+[![Modelos-base de personagens-fruta — painel 2](docs/imagens/modelos-base/painel-02.png)](docs/imagens/modelos-base/painel-02.png)
+
+**Painel 3**
+
+[![Modelos-base de personagens-fruta — painel 3](docs/imagens/modelos-base/painel-03.png)](docs/imagens/modelos-base/painel-03.png)
+
+**Painel 4**
+
+[![Modelos-base de personagens-fruta — painel 4](docs/imagens/modelos-base/painel-04.png)](docs/imagens/modelos-base/painel-04.png)
 
 ---
 
