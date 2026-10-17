@@ -19,6 +19,20 @@ Como desdobramento, foi desenvolvido e publicado o **[Gerador de Personagens Fru
 
 ---
 
+## 🍍 Etapa 02 — Modelos-base principais criados (concluída em 17/10/2026)
+
+Com a identidade visual definida, foram criados os **modelos-base principais do elenco de personagens-fruta**. A conclusão desta etapa foi confirmada pela criadora do projeto, com uma visão geral dos modelos apresentados em imagens.
+
+O conjunto reúne diferentes frutas e variações de gênero, idade, tipo de corpo, cabelo e traços faciais. Predominam **personagens 3D de corpo inteiro, com camiseta branca, calça cinza, calçado claro e fundo branco**, preservando características reconhecíveis de cada fruta, como casca, sementes, folhas, cabinhos e caroços.
+
+Entre os detalhes visuais desenvolvidos estão as cerejas conectadas pelo cabinho, cabelos formados por pequenas frutas e abacates com caroço aparente. Também foram exploradas versões com figurinos e estilos próprios, demonstrando possibilidades de personalização a partir das bases.
+
+**Resultado:** modelos-base principais criados e disponíveis como referências visuais para desenvolver os personagens das histórias. A próxima fase poderá definir nomes, personalidades, figurinos e papéis narrativos, usando as imagens-base para orientar a consistência visual entre cenas.
+
+Este registro documenta o marco de criação; as imagens dos modelos não foram adicionadas ao repositório nesta atualização.
+
+---
+
 ## Modos de criação
 
 - **Personagem Personalizado | Mestre 3.0**: oito campos, com o modelo existente intacto.
