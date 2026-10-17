@@ -2,6 +2,23 @@
 
 Gerador estático em HTML, CSS e JavaScript, sem dependências de produção.
 
+## 🎨 Etapa 01 — Identidade visual dos personagens (concluída em 16/10/2026)
+
+A primeira etapa do **Frutas IA** consistiu em experimentar estilos de personagens-fruta até estabelecer uma linguagem visual consistente para a produção de vídeos. Os testes evoluíram de versões mais humanas ou excessivamente fofas para **frutas claramente reconhecíveis, com cabeça de fruta, corpo humanoide e proporções influenciadas pela anatomia de cada espécie**.
+
+A identidade escolhida combina **caricatura 3D surrealista e levemente estranha**, rostos de expressão humana marcante, casca com acabamento **glossy**, cores vivas e renderização cinematográfica. O objetivo é equilibrar estranhamento, humor e beleza visual, evitando personagens que pareçam humanos fantasiados de frutas.
+
+A etapa resultou em dois modelos complementares:
+
+- **Prompt Mestre 3.0 — Personalizado:** permite definir fruta, gênero, idade, corpo, cabelo, roupa, personalidade e expressão facial.
+- **Prompt Mestre 3.1 — Modelo-base:** padroniza roupa básica, pose frontal, expressão neutra e fundo branco isolado. Somente fruta, gênero, idade e corpo variam. A imagem-base aprovada servirá de referência para alterações futuras no Flow.
+
+Como desdobramento, foi desenvolvido e publicado o **[Gerador de Personagens Frutas IA](https://amandmendes.github.io/frutas-ia/)**, que automatiza o preenchimento dos dois prompts. A interface aceita português e converte termos conhecidos para inglês por meio de dicionários locais; expressões não reconhecidas exigem revisão.
+
+**Resultado:** identidade visual-base e fluxo de criação definidos. Os prompts mestres ficam preservados, enquanto os personagens individuais poderão ser desenvolvidos e aprovados separadamente.
+
+---
+
 ## Modos de criação
 
 - **Personagem Personalizado | Mestre 3.0**: oito campos, com o modelo existente intacto.
