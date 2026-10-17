@@ -13,7 +13,9 @@ O seletor alterna os campos e a visualização do original. Campos ocultos são 
 
 O Prompt Mestre 3.0 está integralmente em `PROMPT_MESTRE_V3`, em `prompt-mestre.js`. Incluímos exatamente o texto fornecido, com o prefixo `[PROMPT MESTRE 3.0:`, o colchete final e os espaços duplos. A cópia de referência em `prompt-mestre-original.txt` permite conferir sua integridade. Somente os oito marcadores são substituídos, em uma única passagem. Todas as ocorrências de `[FRUIT]` são preenchidas.
 
-A interface é em português e as seleções têm valores em inglês. Preencha os campos livres e personalizados em inglês. O site não tem tradução automática: não promete detectar ou traduzir texto arbitrário. Para aceitar português nesses campos, será necessário integrar um serviço de tradução por meio de backend, sem expor credenciais no GitHub Pages.
+A interface aceita valores em português. `translation.js` traduz somente os valores com dicionários locais, sem backend, chamadas de rede ou APIs pagas. O sistema procura primeiro expressões completas, depois combinações menores, sem diferenciar maiúsculas ou acentos. Os valores já em inglês das seleções continuam funcionando.
+
+Termos desconhecidos mantêm sua grafia original e provocam o aviso “Alguns termos personalizados podem precisar de ajuste manual no inglês.” Por isso o dicionário não garante inglês completo para qualquer frase livre. Confira a opção **Ver valores traduzidos**; ajuste o campo original com uma expressão conhecida ou em inglês e gere novamente. A tradução por dicionário não reorganiza livremente a gramática de frases; amplie as expressões em `COMMON` e `CONTEXT` quando necessário. Nenhum texto fixo dos prompts passa pela tradução.
 
 Os resultados usam texto simples, sem interpretar HTML. Alterar um campo invalida o prompt anterior. Antes da cópia, os campos e o resultado são revalidados.
 
@@ -37,4 +39,4 @@ Após mudar os arquivos e salvar um novo commit na `main`, o GitHub atualizará 
 
 O pacote também inclui `.github/workflows/pages.yml`. Envie todos os arquivos, incluindo a pasta oculta `.github`, para a branch `main`. Em **Settings → Pages → Source**, selecione **GitHub Actions**. Em **Actions**, execute “Publicar no GitHub Pages”. Esse fluxo executa os testes e publica somente os arquivos necessários ao site. Utilize apenas um dos dois métodos de publicação.
 
-O projeto não foi enviado nem publicado em uma conta GitHub. A criação do repositório e a publicação serão feitas por você conforme o guia acima.
+Repositório do projeto: https://github.com/AmandMendes/frutas-ia. A publicação depende da configuração do GitHub Pages.

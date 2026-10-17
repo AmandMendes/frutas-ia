@@ -1,3 +1,4 @@
+import { translateValues } from './translation.js';
 import { PROMPT_MESTRE_V3 } from './prompt-mestre.js';
 import { PROMPT_MESTRE_V31 } from './prompt-mestre-v31.js';
 import { generate, MARKERS, BASE_MARKERS } from './generator.js';
@@ -32,6 +33,10 @@ mode.addEventListener('change', updateMode);
 function invalidate() {
   output.value = ''; output.hidden = true; empty.hidden = false;
   copy.disabled = true; feedback.textContent = '';
+  document.querySelector('#translation-warning').textContent = '';
+  document.querySelector('#translated-details').hidden = true;
+  document.querySelector('#translated-details').open = false;
+  document.querySelector('#translated-values').textContent = '';
 }
 function syncCustom() {
   for (const select of form.querySelectorAll('[data-custom]')) {
@@ -51,14 +56,19 @@ function values() {
 form.addEventListener('submit', event => {
   event.preventDefault();
   try {
-    output.value = generate(selected().template, values(), selected().markers);
+    const translated = translateValues(values());
+    output.value = generate(selected().template, translated.values, selected().markers);
+    const labels = {'FRUIT':'Fruta', 'GENDER':'Gênero', 'AGE':'Idade', 'BODY TYPE':'Tipo de corpo', 'HAIRSTYLE':'Cabelo', 'CLOTHING STYLE':'Estilo de roupa', 'PERSONALITY':'Personalidade', 'EXPRESSION':'Expressão facial'};
+    document.querySelector('#translated-values').textContent = Object.entries(translated.values).map(([key, value]) => `${labels[key]}: ${value}`).join('\n');
+    document.querySelector('#translated-details').hidden = false;
+    document.querySelector('#translation-warning').textContent = Object.keys(translated.unknown).length ? 'Alguns termos personalizados podem precisar de ajuste manual no inglês.' : '';
     output.hidden = false; empty.hidden = true; copy.disabled = false;
-    feedback.textContent = 'Prompt gerado. Confira os valores em inglês antes de copiar.';
+    feedback.textContent = 'Prompt gerado. Você pode conferir os valores traduzidos antes de copiar.';
   } catch (error) { invalidate(); feedback.textContent = error.message; }
 });
 copy.addEventListener('click', async () => {
   try {
-    const validated = generate(selected().template, values(), selected().markers);
+    const validated = generate(selected().template, translateValues(values()).values, selected().markers);
     if (output.value !== validated) throw new Error('Gere novamente o prompt antes de copiar.');
     await navigator.clipboard.writeText(validated);
     feedback.textContent = 'Prompt completo copiado!';
