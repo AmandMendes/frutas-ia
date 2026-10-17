@@ -26,6 +26,12 @@ Como desdobramento, foi desenvolvido e publicado o **[Gerador de Personagens Fru
 
 O seletor alterna os campos e a visualização do original. Campos ocultos são desativados e não participam da geração ou validação. Trocar de modo invalida o resultado e bloqueia sua cópia até gerar novamente. O Mestre 3.1 está em `PROMPT_MESTRE_V31`, no arquivo `prompt-mestre-v31.js`, com cópia de referência em `prompt-mestre-v31-original.txt`.
 
+## Adaptar Personagem Existente — Lapidação Visual 3.1
+
+Área independente dos modos de criação. Adicione manualmente a imagem existente ao Google Flow e use o botão **Copiar prompt** para obter o texto oficial completo. Não há formulário de características nem envio de imagens pelo site. O prompt fica visível em inglês e está armazenado separadamente em `PROMPT_LAPIDACAO_V31` (`prompt-lapidacao.js`), com referência integral em `prompt-lapidacao-original.txt`. Essa área não passa pela tradução ou substituição de marcadores. Se a cópia automática não estiver disponível, o texto é selecionado para cópia manual.
+
+Os testes verificam a integridade dos três prompts por SHA-256 e pelas fontes de referência, a cópia da lapidação e sua alternativa manual, além dos testes anteriores de criação, tradução e alternância de modos.
+
 ## Modelo e idioma
 
 O Prompt Mestre 3.0 está integralmente em `PROMPT_MESTRE_V3`, em `prompt-mestre.js`. Incluímos exatamente o texto fornecido, com o prefixo `[PROMPT MESTRE 3.0:`, o colchete final e os espaços duplos. A cópia de referência em `prompt-mestre-original.txt` permite conferir sua integridade. Somente os oito marcadores são substituídos, em uma única passagem. Todas as ocorrências de `[FRUIT]` são preenchidas.

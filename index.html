@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script><script type="module" src="lapidacao.js"></script></head>
 <body><header><a href="./" class="brand">🍓 <span>Frutas IA</span></a><span class="badge">ESTÚDIO DE PERSONAGENS</span></header>
 <main><section class="intro"><span class="eyebrow">DA FRUTA À IMAGINAÇÃO</span><h1>Seu próximo personagem<br>começa aqui<span>.</span></h1><p>Escolha os detalhes. Dê personalidade à sua fruta.<br>Gere um prompt completo para sua próxima criação.</p><div class="chips"><span>✦ Mestres 3.0 e 3.1</span><span>Texto original preservado</span></div></section>
+<section aria-labelledby="create-title" id="criar-personagem"><h2 class="area-title" id="create-title">Criar Personagem</h2>
 <label class="mode-label" for="mode">Modo de criação<select id="mode"><option value="custom">Personagem Personalizado | Mestre 3.0</option><option value="base">Personagem-Base | Mestre 3.1</option></select></label>
 <p id="notice" class="notice" role="status">Carregando modelo…</p>
 <div class="workspace"><section class="card"><div class="card-title"><span class="step">01</span><div><h2>Crie seu personagem</h2><p>Todos os campos são obrigatórios.</p></div></div>
@@ -17,4 +18,14 @@
 <label class="wide">Expressão facial<textarea name="EXPRESSION" required rows="2" placeholder="Ex.: sorriso irônico"></textarea></label>
 </div><p class="hint">Preencha em português. Os valores conhecidos são traduzidos automaticamente; termos fora do dicionário são mantidos e sinalizados.</p><button id="generate" class="primary" disabled>✦ Gerar Prompt</button><button type="reset" class="reset">Limpar campos</button></form></section>
 <section class="card result"><div class="card-title"><span class="step">02</span><div><h2>Seu prompt</h2><p>O texto completo, pronto para usar.</p></div></div><div id="empty" class="empty"><span>✧</span><h3>Uma ideia esperando para nascer</h3><p>Preencha os detalhes ao lado<br>e clique em Gerar Prompt.</p></div><textarea id="output" aria-label="Prompt final completo em inglês" readonly hidden spellcheck="false"></textarea><p id="translation-warning" role="status" aria-live="polite"></p><details id="translated-details" hidden><summary>Ver valores traduzidos</summary><pre id="translated-values"></pre></details><p id="feedback" role="status" aria-live="polite"></p><button id="copy" type="button" disabled>Copiar prompt completo</button><details><summary>Visualizar Prompt Mestre original</summary><pre id="original"></pre></details></section></div>
+</section>
+<section class="adapt-area" aria-labelledby="adapt-title" id="adaptar-personagem">
+<h2 class="area-title" id="adapt-title">Adaptar Personagem Existente</h2>
+<div class="card"><div class="card-title"><span class="step" aria-hidden="true">✦</span><div><h3>Lapidação Visual 3.1</h3><p>Adapte seu personagem à identidade visual oficial do Frutas IA.</p></div></div>
+<p class="adapt-instructions" id="refinement-instructions">Adicione manualmente a imagem do personagem existente ao Google Flow. Copie o prompt abaixo e use-o junto com essa imagem de referência.</p>
+<label for="refinement-output">Prompt completo em inglês</label>
+<textarea id="refinement-output" readonly spellcheck="false" aria-describedby="refinement-instructions"></textarea>
+<button type="button" class="primary" id="refinement-copy">Copiar prompt</button>
+<p id="refinement-feedback" role="status" aria-live="polite"></p>
+</div></section>
 <footer>Feito para dar vida às suas ideias. <span>Frutas IA · Mestres 3.0 e 3.1</span></footer></main></body></html>

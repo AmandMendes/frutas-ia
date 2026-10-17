@@ -26,7 +26,7 @@ jobs:
       - name: Preparar arquivos públicos
         run: |
           mkdir public
-          cp index.html styles.css app.js translation.js generator.js prompt-mestre.js prompt-mestre-v31.js .nojekyll public/
+          cp index.html styles.css lapidacao.js prompt-lapidacao.js app.js translation.js generator.js prompt-mestre.js prompt-mestre-v31.js .nojekyll public/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
