@@ -13,7 +13,8 @@ test('all requested traits have developed personalities and matching concise voi
     assert.ok(personality.text.includes(profile.acting));
     const voice=generateCharacterProfile({mode:'voice',profileId:profile.id},null,()=>0);
     assert.ok(!/[\r\n]/.test(voice.text));assert.ok(voice.text.length<850);
-    for(const phrase of [profile.timbre,profile.intonation,profile.rhythm,'pt-BR','sem caricaturas'])assert.ok(voice.text.includes(phrase));
+    assert.ok(!/sem caricaturas|sem exagero teatral|sem exagero caricatural|interpretação realista/i.test(voice.text));
+    for(const phrase of [profile.timbre,profile.intonation,profile.rhythm,'pt-BR','Interpretação caricata e cômica'])assert.ok(voice.text.includes(phrase));
   }
 });
 test('both options work independently without fruit, sex, visual prompt or other output', () => {

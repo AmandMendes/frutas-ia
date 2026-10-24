@@ -21,7 +21,7 @@ export function generateCharacterProfile({mode, profileId, fruta = '', sexo = ''
     let index = Math.floor(value * SOTAQUES.length);
     if (previous?.accent === SOTAQUES[index]) index = (index + 1) % SOTAQUES.length;
     accent = SOTAQUES[index];
-    text = compact(`${identity.fruta ? `Personagem: ${identity.fruta}. ` : ''}${identity.sexo ? `Voz ${identity.sexo === 'Feminino' ? 'feminina' : 'masculina'}. ` : ''}Perfil ${label.toLowerCase()}. Falar exclusivamente em português brasileiro nativo (pt-BR), com sotaque ${accent.replace(/\.$/,'')}, natural e sem caricaturas. Timbre ${profile.timbre}; entonação ${profile.intonation}; ritmo ${profile.rhythm}. Manter interpretação realista e identidade vocal consistente, sem voz robótica ou sotaque estrangeiro.`);
+    text = compact(`${identity.fruta ? `Personagem: ${identity.fruta}. ` : ''}${identity.sexo ? `Voz ${identity.sexo === 'Feminino' ? 'feminina' : 'masculina'}. ` : ''}Perfil ${label.toLowerCase()}. Falar exclusivamente em português brasileiro nativo (pt-BR), com sotaque ${accent.replace(/\.$/,'')}, bem marcado e reconhecível. Timbre ${profile.timbre}; entonação ${profile.intonation}; ritmo ${profile.rhythm}. Interpretação caricata e cômica, com exagero vocal ligado ao perfil, contrastes de entonação e pausas expressivas. Manter voz consistente e fala compreensível.`);
   }
   return {...identity, mode, profileId, label, text, accent};
 }

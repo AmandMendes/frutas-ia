@@ -35,7 +35,7 @@ export const CHARACTER_PROFILES = Object.freeze([
     id:'esnobe', labels:['Esnobe','Esnobe'],
     story:'Avalia lugares, objetos e pessoas pelo prestígio que acredita que representam. Faz questão de demonstrar refinamento, cita referências sofisticadas e prefere uma crítica elegante a uma reclamação direta. Seu medo é receber o rótulo daquilo que considera comum, por isso mantém certa distância e raramente admite desconhecer alguma coisa. Quando encontra uma experiência simples que realmente desperta emoção, entra em conflito com a imagem que construiu. Pode revelar sensibilidade e curiosidade se deixar de tratar gosto pessoal como hierarquia e descobrir que afeto e pertencimento não dependem de aprovação social.',
     acting:'Gestos contidos, olhar avaliador e mudanças sutis de expressão quando suas referências são questionadas.',
-    timbre:'médio, polido e de articulação nítida', intonation:'reservada e avaliadora, com ironia fina sem exagero teatral', rhythm:'pausado, com finais precisos e silêncios breves'
+    timbre:'médio, polido e de articulação nítida', intonation:'reservada e avaliadora, com ironia marcada e ênfases teatrais', rhythm:'pausado, com finais precisos e silêncios breves'
   },
   {
     id:'gentil', labels:['Gentil','Gentil'],
@@ -101,6 +101,6 @@ export const CHARACTER_PROFILES = Object.freeze([
     id:'afeminado', labels:['Afeminado','Afeminada'],
     story:'Expressa feminilidade de maneira espontânea em seus gestos, na escolha das palavras e no cuidado com a própria apresentação. Usa as mãos para acompanhar o raciocínio, percebe nuances de tom e gosta de encontrar uma forma pessoal de se mostrar ao mundo. Sua expressão pode ser delicada, firme, expansiva ou contida conforme a situação, sem precisar virar uma piada constante. Quando alguém tenta enquadrar seu comportamento, decide entre se preservar e afirmar o próprio jeito com clareza. O conflito do personagem nasce dessa negociação entre pertencimento e autenticidade; seus gostos e relações são individuais, e sua trajetória revela desejos, limites e qualidades que vão além dos trejeitos.',
     acting:'Gestos fluidos, expressão facial atenta e movimentos delicados quando fizerem sentido para a cena; preserve naturalidade e variedade emocional, sem transformar feminilidade em deboche.',
-    timbre:'médio, macio e flexível, sem impor altura aguda', intonation:'melódica e articulada, com nuances expressivas e firmeza quando necessário', rhythm:'fluido e natural, com pausas que acompanham gestos e emoções, sem exagero caricatural'
+    timbre:'médio, macio e flexível, sem impor altura aguda', intonation:'melódica e articulada, com nuances expressivas e firmeza quando necessário', rhythm:'fluido e natural, com pausas que acompanham gestos e emoções, com floreios vocais caricatos'
   }
 ].map(profile => Object.freeze({...profile, labels:Object.freeze(profile.labels)})));
