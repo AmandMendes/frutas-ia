@@ -36,6 +36,7 @@ with sync_playwright() as pw:
         page.locator('#hyper-sex').select_option('Feminino')
         page.locator('#hyper-form button[type="submit"]').click()
         assert 'FRUTA ESCOLHIDA: Morango' in page.locator('#hyper-image-output').input_value()
+        page.locator('#hyper-trait').select_option('gentil')
         page.locator('#hyper-voice-generate').click()
         assert 'PERSONAGEM: Morango' in page.locator('#hyper-voice-output').input_value()
         # Filtragem e seleção com teclado não submetem o formulário.
@@ -65,7 +66,7 @@ with sync_playwright() as pw:
         expect(page.locator('#hyper-fruit-status')).to_contain_text('Nenhuma sugestão')
         field.press('Enter')
         assert 'FRUTA ESCOLHIDA: Rambutã' in page.locator('#hyper-image-output').input_value()
-        page.locator('#hyper-voice-again').click()
+        page.locator('#hyper-voice-generate').click()
         assert 'PERSONAGEM: Rambutã' in page.locator('#hyper-voice-output').input_value()
         page.locator('#hyper-image-copy').click()
         assert page.evaluate('window.__copied') == page.locator('#hyper-image-output').input_value()

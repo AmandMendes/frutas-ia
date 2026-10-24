@@ -26,7 +26,7 @@ jobs:
       - name: Preparar arquivos públicos
         run: |
           mkdir public
-          cp index.html styles.css fruit-combobox.js hiper-realista.js hiper-realista-generator.js prompt-hiper-realista.js personality-data.js personality-generator.js lapidacao.js prompt-lapidacao.js app.js translation.js generator.js prompt-mestre.js prompt-mestre-v31.js .nojekyll public/
+          cp index.html styles.css character-profiles.js character-profile-generator.js personality-panel.js fruit-combobox.js hiper-realista.js hiper-realista-generator.js prompt-hiper-realista.js personality-data.js personality-generator.js lapidacao.js prompt-lapidacao.js app.js translation.js generator.js prompt-mestre.js prompt-mestre-v31.js .nojekyll public/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

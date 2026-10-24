@@ -26,17 +26,42 @@ with sync_playwright() as pw:
   page.locator('#copy').click();assert page.evaluate('window.__copied')==old
   page.locator('#mode').select_option('base');page.locator('#generate').click();assert 'pure white background' in page.locator('#output').input_value()
   page.locator('#refinement-copy').click();assert page.evaluate('window.__copied').startswith('Use the attached image as the identity reference')
-  # New category: voice can generate before the image; neither generator rewrites the other.
+  # Each profile mode can generate before the image, with no required identity.
   page.locator('a[href="#personagem-hiper-realista"]').click()
   expect(page.locator('#hyper-title')).to_be_visible()
   assert page.locator('#hyper-body').input_value()==''
+  page.locator('[name="hyper-profile-mode"][value="voice"]').check()
+  page.locator('#hyper-trait').select_option('gentil')
+  page.locator('#hyper-voice-generate').click()
+  independent_voice=page.locator('#hyper-voice-output').input_value()
+  assert independent_voice.startswith('Perfil gentil.') and '\n' not in independent_voice and len(independent_voice)<850
+  page.locator('[name="hyper-profile-mode"][value="personality"]').check()
+  page.locator('#hyper-trait').select_option('fofoqueiro')
+  page.locator('#hyper-voice-generate').click()
+  independent_personality=page.locator('#hyper-voice-output').input_value()
+  assert 'PERSONAGEM: Livre' in independent_personality and 'confidência' in independent_personality
+  page.locator('[name="hyper-profile-mode"][value="voice"]').check()
+  assert page.locator('#hyper-voice-output').input_value()==independent_voice
+  page.locator('#hyper-voice-copy').click();assert page.evaluate('window.__copied')==independent_voice
+  page.locator('[name="hyper-profile-mode"][value="personality"]').check()
+  assert page.locator('#hyper-voice-output').input_value()==independent_personality
   page.locator('#hyper-fruit').fill('morango');page.locator('#hyper-sex').select_option('Feminino')
-  page.locator('#hyper-voice-generate').click();first=page.locator('#hyper-voice-output').input_value();assert 'SEXO: Feminino' in first
+  page.locator('#hyper-voice-generate').click();first=page.locator('#hyper-voice-output').input_value()
+  assert 'SEXO: Feminino' in first and 'PERFIL: Fofoqueira' in first
   page.locator('#hyper-form button[type="submit"]').click();image=page.locator('#hyper-image-output').input_value()
   assert 'SEXO DO PERSONAGEM: Feminino' in image and 'TIPO DE CORPO:' not in image
   page.locator('#hyper-image-copy').click();assert page.evaluate('window.__copied')==image
-  page.locator('#hyper-voice-again').click();second=page.locator('#hyper-voice-output').input_value();assert second!=first
+  page.locator('#hyper-trait').select_option('barraqueiro')
+  assert page.locator('#hyper-voice-output').input_value()==first
+  assert 'última geração' in page.locator('#hyper-identity-notice').inner_text()
+  page.locator('#hyper-voice-generate').click();second=page.locator('#hyper-voice-output').input_value();assert second!=first
   assert page.locator('#hyper-image-output').input_value()==image
+  page.locator('[name="hyper-profile-mode"][value="voice"]').check()
+  page.locator('#hyper-voice-generate').click();voice=page.locator('#hyper-voice-output').input_value()
+  assert 'perfil barraqueira' in voice.lower() and '\n' not in voice
+  assert page.locator('#hyper-image-output').input_value()==image
+  page.locator('[name="hyper-profile-mode"][value="personality"]').check()
+  assert page.locator('#hyper-voice-output').input_value()==second
   for body in ['Magro','Médio','Gordo','Musculoso']:
    page.locator('#hyper-body').select_option(body);expect(page.locator('#hyper-image-copy')).to_be_disabled()
    assert page.locator('#hyper-voice-output').input_value()==second
@@ -44,9 +69,9 @@ with sync_playwright() as pw:
   page.locator('#hyper-body').select_option('');page.locator('#hyper-form button[type="submit"]').click();assert 'TIPO DE CORPO:' not in page.locator('#hyper-image-output').input_value()
   page.locator('#hyper-fruit').fill('pera');page.locator('#hyper-sex').select_option('Masculino')
   assert page.locator('#hyper-voice-output').input_value()==second
-  assert 'último sorteio' in page.locator('#hyper-identity-notice').inner_text()
+  assert 'última geração' in page.locator('#hyper-identity-notice').inner_text()
   page.locator('#hyper-voice-copy').click();assert page.evaluate('window.__copied')==second
-  page.locator('#hyper-voice-again').click();assert 'PERSONAGEM: pera' in page.locator('#hyper-voice-output').input_value() and 'SEXO: Masculino' in page.locator('#hyper-voice-output').input_value()
+  page.locator('#hyper-voice-generate').click();assert 'PERSONAGEM: pera' in page.locator('#hyper-voice-output').input_value() and 'SEXO: Masculino' in page.locator('#hyper-voice-output').input_value()
   # Manual-copy fallback selects the entire visible sheet.
   page.evaluate("Object.defineProperty(navigator,'clipboard',{configurable:true,value:undefined})")
   page.locator('#hyper-voice-copy').click()

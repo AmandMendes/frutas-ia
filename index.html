@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script><script type="module" src="lapidacao.js"></script><script type="module" src="hiper-realista.js"></script><script type="module" src="fruit-combobox.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script><script type="module" src="lapidacao.js"></script><script type="module" src="hiper-realista.js"></script><script type="module" src="fruit-combobox.js"></script><script type="module" src="personality-panel.js"></script></head>
 <body><header><a href="./" class="brand">🍓 <span>Frutas IA</span></a><span class="badge">ESTÚDIO DE PERSONAGENS</span></header>
 <main><section class="intro"><span class="eyebrow">DA FRUTA À IMAGINAÇÃO</span><h1>Seu próximo personagem<br>começa aqui<span>.</span></h1><p>Escolha os detalhes. Dê personalidade à sua fruta.<br>Gere um prompt completo para sua próxima criação.</p><div class="chips"><span>✦ Mestres 3.0 e 3.1</span><span>Texto original preservado</span></div></section>
 <nav class="generator-nav" aria-label="Geradores de personagens"><a href="#criar-personagem">Criar Personagem · Mestres 3.0 e 3.1</a><a href="#adaptar-personagem">Adaptar Personagem Existente</a><a href="#personagem-hiper-realista">Personagem Fruta Hiper-realista</a></nav>
@@ -31,7 +31,7 @@
 </div></section>
 <section class="hyper-area" id="personagem-hiper-realista" aria-labelledby="hyper-title">
 <h2 class="area-title" id="hyper-title">Personagem Fruta Hiper-realista</h2>
-<p class="adapt-instructions">Transforme uma referência humana em um personagem-fruta fotográfico e sorteie sua personalidade e voz. Os dois geradores compartilham apenas fruta e sexo.</p>
+<p class="adapt-instructions">Transforme uma referência humana em um personagem-fruta fotográfico e defina sua personalidade e estilo de voz. As opções de personalidade e voz também funcionam sem preencher a imagem.</p>
 <div class="workspace">
 <section class="card" aria-labelledby="hyper-image-title">
 <div class="card-title"><span class="step" aria-hidden="true">01</span><div><h3 id="hyper-image-title">Imagem Base Hiper-realista</h3><p>Prompt original de transformação antropomórfica.</p></div></div>
@@ -56,15 +56,23 @@
 <details><summary>Visualizar prompt original aprovado</summary><pre id="hyper-original"></pre></details>
 </section>
 <section class="card" aria-labelledby="hyper-voice-title">
-<div class="card-title"><span class="step" aria-hidden="true">02</span><div><h3 id="hyper-voice-title">Personalidade e Voz</h3><p>Quatro sorteios independentes, novas combinações.</p></div></div>
+<div class="card-title"><span class="step" aria-hidden="true">02</span><div><h3 id="hyper-voice-title">Personalidade e Estilo de Voz</h3><p>Escolha o tipo de texto e um perfil predefinido.</p></div></div>
+<p class="hint">Cada opção funciona sozinha. Não é necessário gerar a personalidade antes da voz nem preencher os campos da imagem. Fruta e sexo, quando informados, são usados apenas como contexto.</p>
 <p id="hyper-shared-identity" class="shared-identity" aria-live="polite"></p>
-<p class="hint">Preencha a fruta e o sexo na caixa de imagem. Personalidade, sotaque brasileiro, timbre e estilo de fala são sorteados automaticamente. Não é necessário gerar o prompt visual primeiro.</p>
-<button type="button" id="hyper-voice-generate" class="primary">Gerar personalidade</button>
-<button type="button" id="hyper-voice-again" class="hyper-again" disabled>Gerar novamente</button>
+<form id="hyper-profile-form">
+<fieldset class="profile-mode-options"><legend>O que você quer gerar?</legend>
+<label><input type="radio" name="hyper-profile-mode" value="personality" checked> Gerar personalidade</label>
+<label><input type="radio" name="hyper-profile-mode" value="voice"> Gerar estilo de voz</label>
+</fieldset>
+<label for="hyper-trait">Personalidade predefinida<select id="hyper-trait" required><option value="">Selecione um perfil</option></select></label>
+<p class="hint">Personalidade descreve motivações, hábitos e comportamento. Estilo de voz resume sotaque, timbre, entonação e ritmo em texto contínuo, baseado no perfil escolhido.</p>
+<button type="submit" id="hyper-voice-generate" class="primary">Gerar personalidade</button>
+</form>
 <p id="hyper-identity-notice" class="hint" role="status" aria-live="polite"></p>
-<textarea class="hyper-output" id="hyper-voice-output" aria-label="Ficha completa de personalidade e voz" readonly hidden spellcheck="false"></textarea>
+<label id="hyper-profile-output-label" for="hyper-voice-output">Personalidade — descrição do personagem</label>
+<textarea class="hyper-output" id="hyper-voice-output" aria-labelledby="hyper-profile-output-label" readonly hidden spellcheck="false"></textarea>
 <p id="hyper-voice-feedback" class="hyper-feedback" role="status" aria-live="polite"></p>
-<button type="button" id="hyper-voice-copy" disabled>Copiar ficha</button>
+<button type="button" id="hyper-voice-copy" disabled>Copiar personalidade</button>
 </section>
 </div></section>
 <footer>Feito para dar vida às suas ideias. <span>Frutas IA · Mestres 3.0 e 3.1</span></footer></main></body></html>
