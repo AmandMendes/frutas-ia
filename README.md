@@ -64,6 +64,19 @@ O seletor alterna os campos e a visualização do original. Campos ocultos são 
 
 Os testes verificam a integridade dos três prompts por SHA-256 e pelas fontes de referência, a cópia da lapidação e sua alternativa manual, além dos testes anteriores de criação, tradução e alternância de modos.
 
+## Personagem Fruta Hiper-realista
+
+Categoria integrada à mesma página e navegação do gerador, com duas caixas independentes:
+
+1. **Imagem Base Hiper-realista:** fruta livre e sexo obrigatórios; corpo opcional (Não especificar, Magro, Médio, Gordo ou Musculoso). O prompt aprovado fica integralmente em `PROMPT_HIPER_REALISTA_ORIGINAL`, com referência em `prompt-hiper-realista-original.txt`. A geração substitui as duas ocorrências de `[FRUTA]`, acrescenta o sexo após “FRUTA ESCOLHIDA” e inclui as duas instruções de biotipo na seção 3 somente se houver uma escolha. Não acrescenta corpo inteiro, fundo branco, glossy ou lapidação. Anexe manualmente uma fotografia humana ao Google Flow.
+2. **Personalidade e Voz:** utiliza automaticamente a fruta e o sexo da primeira caixa, sem exigir geração de imagem. Sorteia separadamente uma das 20 personalidades, um dos 25 sotaques brasileiros, um dos 10 timbres do sexo selecionado e um dos 15 ritmos/estilos. Personalidades têm flexão feminina e masculina. Todos os sotaques são naturais e sem caricaturas; não há associação entre sotaque e personalidade. Se a combinação completa coincidir com a anterior, outro ritmo é sorteado para garantir uma combinação diferente.
+
+“Gerar novamente” não altera o prompt visual, a fruta, o sexo ou o corpo. A ficha permanece visível até outro sorteio. Se fruta ou sexo mudarem, um aviso identifica que a ficha ainda pertence ao sorteio anterior; sua cópia continua correspondendo ao texto visível. A próxima geração usa os campos atuais. Alterações no formulário invalidam somente o prompt visual anterior.
+
+Os dois resultados desta categoria são em português, conforme o material oficial, e têm botões próprios de cópia com seleção manual como alternativa. A geração e os sorteios funcionam inteiramente no navegador, sem APIs, backend ou serviços pagos. Os Mestres 3.0/3.1, a Lapidação 3.1 e a tradução dos geradores existentes não foram modificados.
+
+Os testes adicionais cobrem a integridade do original, inserções autorizadas, omissão do biotipo, listas e limites dos sorteios, timbres por sexo, não repetição consecutiva, compartilhamento de identidade e independência dos resultados. A interface foi validada em Chromium nas larguras de 1280, 390 e 320 pixels, sem erros de JavaScript ou transbordamento horizontal. O teste de navegador cobre também os modos anteriores, cópia, compartilhamento e manutenção da ficha. Para reproduzir, instale o Playwright para Python e o Chromium e execute `python tests/browser-hyper.py`; se utilizar um Chromium do sistema, informe o caminho com `BROWSER_EXECUTABLE_PATH=/usr/bin/chromium`. Essas ferramentas são apenas de desenvolvimento e não são necessárias no site publicado.
+
 ## Modelo e idioma
 
 O Prompt Mestre 3.0 está integralmente em `PROMPT_MESTRE_V3`, em `prompt-mestre.js`. Incluímos exatamente o texto fornecido, com o prefixo `[PROMPT MESTRE 3.0:`, o colchete final e os espaços duplos. A cópia de referência em `prompt-mestre-original.txt` permite conferir sua integridade. Somente os oito marcadores são substituídos, em uma única passagem. Todas as ocorrências de `[FRUIT]` são preenchidas.
