@@ -77,6 +77,8 @@ Cada opção mantém seu último resultado, restaurado ao alternar entre persona
 
 Os resultados desta categoria são em português. Os Mestres 3.0/3.1, a Lapidação 3.1, o prompt hiper-realista original, o campo híbrido de frutas e a tradução existente permanecem preservados. Para testar os perfis, execute `npm test`; os testes opcionais de navegador usam Playwright para Python e Chromium (`BROWSER_EXECUTABLE_PATH=/usr/bin/chromium python tests/browser-hyper.py`).
 
+**ASMR (somente em Gerar estilo de voz):** volume muito baixo, quase sussurrado, timbre suave e fala lenta, calma e pausada. Usa interpretação íntima e relaxante, substituindo o exagero caricato apenas nessa opção. Não aparece entre as personalidades narrativas.
+
 ### Campo híbrido de fruta hiper-realista
 
 O campo “Fruta” aceita seleção entre 25 sugestões ou qualquer nome digitado, como “Rambutã”. A pesquisa ignora maiúsculas e acentos e encontra trechos do nome (“mora” sugere “Morango”). Clique ou toque para abrir; use ↑/↓ e Enter para selecionar, Escape para fechar e Tab para seguir. Sem sugestão ativa, Enter mantém o texto livre e gera normalmente. A seleção emite os mesmos eventos do campo anterior, preservando o compartilhamento com personalidade e voz. O componente é local, sem bibliotecas ou serviços externos. Os testes de filtragem e integração ficam em `tests/fruit-combobox.test.js`. Para reproduzir a seleção com mouse/toque, teclado e os testes de compartilhamento em 1280, 390 e 320 pixels, execute `BROWSER_EXECUTABLE_PATH=/usr/bin/chromium python tests/browser-fruit-combobox.py` com Playwright para Python e Chromium instalados.

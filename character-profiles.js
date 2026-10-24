@@ -102,5 +102,13 @@ export const CHARACTER_PROFILES = Object.freeze([
     story:'Expressa feminilidade de maneira espontânea em seus gestos, na escolha das palavras e no cuidado com a própria apresentação. Usa as mãos para acompanhar o raciocínio, percebe nuances de tom e gosta de encontrar uma forma pessoal de se mostrar ao mundo. Sua expressão pode ser delicada, firme, expansiva ou contida conforme a situação, sem precisar virar uma piada constante. Quando alguém tenta enquadrar seu comportamento, decide entre se preservar e afirmar o próprio jeito com clareza. O conflito do personagem nasce dessa negociação entre pertencimento e autenticidade; seus gostos e relações são individuais, e sua trajetória revela desejos, limites e qualidades que vão além dos trejeitos.',
     acting:'Gestos fluidos, expressão facial atenta e movimentos delicados quando fizerem sentido para a cena; preserve naturalidade e variedade emocional, sem transformar feminilidade em deboche.',
     timbre:'médio, macio e flexível, sem impor altura aguda', intonation:'melódica e articulada, com nuances expressivas e firmeza quando necessário', rhythm:'fluido e natural, com pausas que acompanham gestos e emoções, com floreios vocais caricatos'
+  },
+  {
+    id:'asmr', labels:['ASMR','ASMR'], voiceOnly:true,
+    timbre:'muito suave, macio e delicadamente soproso',
+    intonation:'sussurrada e acolhedora, em volume muito baixo, quase um sussurro',
+    rhythm:'lento, calmo e pausado, com articulação delicada e respirações discretas',
+    accentStyle:'suave e discreto',
+    voiceDirection:'Interpretação íntima, relaxante e agradável de ouvir, sem projeção forte, tensão vocal ou variações bruscas de volume. Manter voz consistente e fala compreensível.'
   }
 ].map(profile => Object.freeze({...profile, labels:Object.freeze(profile.labels)})));

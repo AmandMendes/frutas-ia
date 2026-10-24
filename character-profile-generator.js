@@ -6,6 +6,7 @@ export function generateCharacterProfile({mode, profileId, fruta = '', sexo = ''
   const profile = CHARACTER_PROFILES.find(item => item.id === profileId);
   if (!profile) throw new Error('Selecione uma personalidade predefinida.');
   if (!['personality','voice'].includes(mode)) throw new Error('Selecione o tipo de geração.');
+  if (profile.voiceOnly && mode !== 'voice') throw new Error('Este estilo está disponível apenas em Gerar estilo de voz.');
   const identity = {fruta:compact(fruta), sexo:['Feminino','Masculino'].includes(sexo) ? sexo : ''};
   const label = profile.labels[identity.sexo === 'Feminino' ? 1 : 0];
   const context = identity.fruta ? `PERSONAGEM: ${identity.fruta}` : 'PERSONAGEM: Livre';
@@ -21,7 +22,7 @@ export function generateCharacterProfile({mode, profileId, fruta = '', sexo = ''
     let index = Math.floor(value * SOTAQUES.length);
     if (previous?.accent === SOTAQUES[index]) index = (index + 1) % SOTAQUES.length;
     accent = SOTAQUES[index];
-    text = compact(`${identity.fruta ? `Personagem: ${identity.fruta}. ` : ''}${identity.sexo ? `Voz ${identity.sexo === 'Feminino' ? 'feminina' : 'masculina'}. ` : ''}Perfil ${label.toLowerCase()}. Falar exclusivamente em português brasileiro nativo (pt-BR), com sotaque ${accent.replace(/\.$/,'')}, bem marcado e reconhecível. Timbre ${profile.timbre}; entonação ${profile.intonation}; ritmo ${profile.rhythm}. Interpretação caricata e cômica, com exagero vocal ligado ao perfil, contrastes de entonação e pausas expressivas. Manter voz consistente e fala compreensível.`);
+    text = compact(`${identity.fruta ? `Personagem: ${identity.fruta}. ` : ''}${identity.sexo ? `Voz ${identity.sexo === 'Feminino' ? 'feminina' : 'masculina'}. ` : ''}Perfil ${label.toLowerCase()}. Falar exclusivamente em português brasileiro nativo (pt-BR), com sotaque ${accent.replace(/\.$/,'')}, ${profile.accentStyle || 'bem marcado e reconhecível'}. Timbre ${profile.timbre}; entonação ${profile.intonation}; ritmo ${profile.rhythm}. ${profile.voiceDirection || 'Interpretação caricata e cômica, com exagero vocal ligado ao perfil, contrastes de entonação e pausas expressivas. Manter voz consistente e fala compreensível.'}`);
   }
   return {...identity, mode, profileId, label, text, accent};
 }

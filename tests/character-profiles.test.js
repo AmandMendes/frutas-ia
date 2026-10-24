@@ -5,8 +5,8 @@ import { generateCharacterProfile } from '../character-profile-generator.js';
 import { SOTAQUES } from '../personality-data.js';
 
 test('all requested traits have developed personalities and matching concise voice directions', () => {
-  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro','lunatico','antissocial','misterioso','espirito-de-porco','pick-me-girl','afeminado']);
-  for(const profile of CHARACTER_PROFILES) {
+  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro','lunatico','antissocial','misterioso','espirito-de-porco','pick-me-girl','afeminado','asmr']);
+  for(const profile of CHARACTER_PROFILES.filter(profile=>!profile.voiceOnly)) {
     const personality=generateCharacterProfile({mode:'personality',profileId:profile.id});
     assert.ok(personality.text.includes(profile.story));
     assert.ok(profile.story.length>450);
@@ -39,4 +39,13 @@ test('optional identity, gender flexion, validation and continuous custom names'
   assert.ok(!voice.text.includes('\n'));assert.ok(voice.text.includes('Voz masculina.'));
   assert.throws(()=>generateCharacterProfile({mode:'voice',profileId:''}));
   assert.throws(()=>generateCharacterProfile({mode:'invalid',profileId:'gentil'}));
+});
+
+test('ASMR is voice-only, quiet and continuous, overriding caricature instructions', () => {
+  const voice=generateCharacterProfile({mode:'voice',profileId:'asmr'},null,()=>0);
+  assert.ok(!/[\r\n]/.test(voice.text));
+  for(const phrase of ['volume muito baixo','quase um sussurro','lento, calmo e pausado','relaxante','pt-BR']) assert.ok(voice.text.includes(phrase));
+  assert.ok(!/caricata|cômica|exagero vocal|bem marcado/.test(voice.text));
+  assert.ok(voice.text.length<850);
+  assert.throws(()=>generateCharacterProfile({mode:'personality',profileId:'asmr'}), /apenas em Gerar estilo de voz/);
 });

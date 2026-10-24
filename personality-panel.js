@@ -20,6 +20,13 @@ function updateNotice() {
 }
 function refresh() {
   const isVoice = mode() === 'voice';
+  document.querySelector('#hyper-trait-label').textContent = isVoice ? 'Perfil ou estilo de voz' : 'Personalidade predefinida';
+  for (const option of [...select.options].slice(1)) {
+    const profile = CHARACTER_PROFILES.find(item => item.id === option.value);
+    option.hidden = Boolean(profile.voiceOnly && !isVoice);
+    option.disabled = option.hidden;
+  }
+  if (select.selectedOptions[0]?.disabled) select.value = results[mode()]?.profileId || '';
   document.querySelector('#hyper-voice-generate').textContent = isVoice ? 'Gerar estilo de voz' : 'Gerar personalidade';
   document.querySelector('#hyper-profile-output-label').textContent = isVoice ? 'Estilo de voz — texto contínuo para o Flow' : 'Personalidade — descrição do personagem';
   copy.textContent = isVoice ? 'Copiar estilo de voz' : 'Copiar personalidade';
