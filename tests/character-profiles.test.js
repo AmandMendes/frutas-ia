@@ -5,7 +5,7 @@ import { generateCharacterProfile } from '../character-profile-generator.js';
 import { SOTAQUES } from '../personality-data.js';
 
 test('all requested traits have developed personalities and matching concise voice directions', () => {
-  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro']);
+  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro','lunatico','antissocial','misterioso']);
   for(const profile of CHARACTER_PROFILES) {
     const personality=generateCharacterProfile({mode:'personality',profileId:profile.id});
     assert.ok(personality.text.includes(profile.story));

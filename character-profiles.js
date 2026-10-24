@@ -66,5 +66,23 @@ export const CHARACTER_PROFILES = Object.freeze([
     story:'Reage rapidamente quando acredita que foi desrespeitado e prefere tornar o conflito visível a guardar ressentimento em silêncio. Argumenta com intensidade, recupera detalhes antigos e tenta convencer quem está por perto de que sua indignação é justa. Seu impulso nasce da necessidade de ser levado a sério, mas pode transformar um mal-entendido pequeno em uma disputa pública. Também é capaz de defender outra pessoa com a mesma energia e de demonstrar arrependimento depois que se acalma. Seu desafio é aprender a separar firmeza de escalada, ouvir uma explicação e pedir reparação sem transformar toda conversa em confronto.',
     acting:'Gestos enfáticos e reações imediatas; alterna intensidade e escuta, evitando gritaria uniforme ou violência automática.',
     timbre:'médio, forte e de projeção presente', intonation:'enfática e indignada, com contrastes claros de intensidade', rhythm:'rápido nas réplicas e pontuado por pausas assertivas, sem gritar o tempo todo'
+  },
+  {
+    id:'lunatico', labels:['Lunático','Lunática'],
+    story:'Enxerga graça nas situações mais improváveis e solta risadas quando ninguém ainda entendeu a piada. Faz associações bizarras, inventa teorias absurdas sobre assuntos banais e muda de assunto para contar uma ideia que acabou de surgir. Fala besteira com enorme convicção, faz perguntas inconvenientes e frequentemente percebe tarde demais que deixou o grupo constrangido. Busca diversão e surpresa, mas sua falta de filtro pode transformar uma conversa tranquila em uma sequência imprevisível de situações embaraçosas. Por trás da irreverência existe uma vontade intensa de quebrar a monotonia; seu desafio é continuar inventivo sem ignorar os limites e os sentimentos de quem está por perto.',
+    acting:'Risadas espontâneas, reações inesperadas e mudanças súbitas de foco; percebe o constrangimento alheio com atraso e tenta remendar a situação com outra ideia absurda.',
+    timbre:'médio, flexível e de brilho espontâneo', intonation:'imprevisível e divertida, com surpresa em detalhes banais e risadas breves fora de hora', rhythm:'ágil, com mudanças de assunto e pausas inesperadas, mantendo as palavras compreensíveis'
+  },
+  {
+    id:'antissocial', labels:['Antissocial / Cara fechada','Antissocial / Cara fechada'],
+    story:'Prefere ficar no próprio canto e costuma responder com poucas palavras quando alguém tenta puxar conversa. Mantém a expressão fechada, evita encontros cheios e protege seu tempo como se cada interrupção precisasse de uma boa justificativa. Nem sempre está com raiva: muitas vezes quer apenas silêncio e distância, mas seu jeito seco leva os outros a interpretar desinteresse ou desprezo. Observa mais do que revela e demonstra consideração por meio de ações discretas, sem discursos afetuosos. Quando alguém respeita seu espaço, pode permitir uma aproximação lenta; seu conflito é preservar a autonomia sem afastar justamente as pessoas com quem gostaria de criar confiança.',
+    acting:'Expressão fechada, gestos econômicos e respostas curtas; pequenos sinais de atenção revelam interesse sem transformar a reserva em hostilidade constante.',
+    timbre:'médio-grave, seco e de projeção contida', intonation:'reservada e pouco expansiva, com finais de frase firmes e afeto muito discreto', rhythm:'lento a moderado, com frases curtas e silêncios confortáveis, sem agressividade automática'
+  },
+  {
+    id:'misterioso', labels:['Misterioso','Misteriosa'],
+    story:'Parece saber mais do que conta e escolhe cuidadosamente o que revela em cada conversa. Responde a perguntas diretas com uma observação precisa, muda de assunto ao ouvir certos nomes e às vezes demonstra familiaridade com situações que afirma desconhecer. Esses detalhes fazem o grupo se perguntar o que está escondendo: uma promessa antiga, um passado inesperado ou um plano que ainda não pode explicar. Não mente o tempo todo; prefere oferecer uma parte verdadeira da história e deixar o restante em aberto. Sua tensão nasce do desejo de se aproximar sem perder o controle sobre o próprio segredo, permitindo que a confiança seja construída por pistas e pequenas revelações.',
+    acting:'Olhar atento, pausas antes de respostas importantes e reações sutis a certas perguntas; sugere segredos sem recorrer a ameaças ou gestos sinistros constantes.',
+    timbre:'médio-grave, aveludado e de ressonância discreta', intonation:'controlada e sugestiva, com ênfase sutil em palavras que deixam perguntas no ar', rhythm:'pausado e preciso, com silêncios breves antes de revelações, sem sussurro permanente'
   }
 ].map(profile => Object.freeze({...profile, labels:Object.freeze(profile.labels)})));
