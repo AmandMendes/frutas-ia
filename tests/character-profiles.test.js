@@ -5,7 +5,7 @@ import { generateCharacterProfile } from '../character-profile-generator.js';
 import { SOTAQUES } from '../personality-data.js';
 
 test('all requested traits have developed personalities and matching concise voice directions', () => {
-  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro','lunatico','antissocial','misterioso','espirito-de-porco','pick-me-girl','afeminado','asmr']);
+  assert.deepEqual(CHARACTER_PROFILES.map(p=>p.id),['alegre','fofoqueiro','invejoso','machao','metido','esnobe','gentil','timido','extrovertido','rabugento','barraqueiro','lunatico','antissocial','misterioso','espirito-de-porco','pick-me-girl','afeminado','asmr','malandrao']);
   for(const profile of CHARACTER_PROFILES.filter(profile=>!profile.voiceOnly)) {
     const personality=generateCharacterProfile({mode:'personality',profileId:profile.id});
     assert.ok(personality.text.includes(profile.story));
@@ -24,8 +24,8 @@ test('both options work independently without fruit, sex, visual prompt or other
   assert.ok(personality.text.includes('PERSONAGEM: Livre'));
   assert.equal(personality.accent,null);
 });
-test('accent is independent from trait and immediate repeated accent is avoided', () => {
-  for(const profile of CHARACTER_PROFILES) {
+test('random accents remain independent and avoid immediate repeats for profiles without a fixed accent', () => {
+  for(const profile of CHARACTER_PROFILES.filter(profile=>!profile.fixedAccent)) {
     const first=generateCharacterProfile({mode:'voice',profileId:profile.id},null,()=>0);
     assert.equal(first.accent,SOTAQUES[0]);
     const next=generateCharacterProfile({mode:'voice',profileId:profile.id},first,()=>0);
@@ -48,4 +48,18 @@ test('ASMR is voice-only, quiet and continuous, overriding caricature instructio
   assert.ok(!/caricata|cômica|exagero vocal|bem marcado/.test(voice.text));
   assert.ok(voice.text.length<850);
   assert.throws(()=>generateCharacterProfile({mode:'personality',profileId:'asmr'}), /apenas em Gerar estilo de voz/);
+});
+
+test('Malandrão always speaks exclusively Carioca, including repeated generations and gender variants', () => {
+  for(const sexo of ['Masculino','Feminino']) {
+    let previous=null;
+    for(let i=0;i<3;i++) {
+      const voice=generateCharacterProfile({mode:'voice',profileId:'malandrao',sexo},previous,()=>{throw Error('Fixed accent must not draw another region');});
+      assert.equal(voice.accent,'Carioca, Rio de Janeiro.');
+      assert.ok(voice.text.includes('exclusivamente carioca'));
+      assert.ok(voice.text.includes('gírias da quebrada'));
+      assert.ok(!voice.text.includes('\\n'));
+      previous=voice;
+    }
+  }
 });

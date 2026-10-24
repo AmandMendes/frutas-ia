@@ -110,5 +110,15 @@ export const CHARACTER_PROFILES = Object.freeze([
     rhythm:'lento, calmo e pausado, com articulação delicada e respirações discretas',
     accentStyle:'suave e discreto',
     voiceDirection:'Interpretação íntima, relaxante e agradável de ouvir, sem projeção forte, tensão vocal ou variações bruscas de volume. Manter voz consistente e fala compreensível.'
+  },
+  {
+    id:'malandrao', labels:['Malandrão','Malandrona'],
+    story:'Entra em qualquer conversa procurando uma oportunidade de sair na vantagem. Tem lábia, se faz de íntimo rapidamente e apresenta seus interesses como se estivesse oferecendo um grande favor aos outros. Quando alguém pede uma resposta direta, desconversa, troca o foco e usa humor para ganhar tempo. Gosta de parecer mais esperto que todo mundo e pode prometer mais do que pretende cumprir, contando que seu charme resolva as cobranças depois. Sua autoconfiança vacila quando encontra alguém que conhece seus truques e não aceita enrolação. A graça do personagem está nas tentativas de transformar cada situação em um negócio favorável, até perceber que confiança perdida não se recupera apenas com uma boa conversa.',
+    acting:'Sorriso de quem acha que já entendeu o jogo, gestos de cumplicidade e mudanças rápidas de argumento quando é confrontado; a pose de espertão contrasta com pequenos momentos de aperto.',
+    fixedAccent:'Carioca, Rio de Janeiro.',
+    accentStyle:'exclusivamente carioca, coloquial e com gírias da quebrada',
+    timbre:'médio, flexível e levemente rouco',
+    intonation:'cheia de lábia e falsa cumplicidade, com malícia cômica e confiança de espertão',
+    rhythm:'ágil e solto, alongando palavras para convencer e acelerando para desconversar'
   }
 ].map(profile => Object.freeze({...profile, labels:Object.freeze(profile.labels)})));

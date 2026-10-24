@@ -16,12 +16,15 @@ export function generateCharacterProfile({mode, profileId, fruta = '', sexo = ''
     // Perfil narrativo predefinido; não depende de sorteio vocal ou imagem.
     text = `${context}${gender}\n\nPERFIL: ${label}\n\nPERSONALIDADE E COMPORTAMENTO\n\n${profile.story}\n\nDIREÇÃO DE INTERPRETAÇÃO\n\n${profile.acting} Preserve a aparência do personagem; expresse estes traços por meio de atitudes, escolhas e reações naturais.`;
   } else {
-    // Região e personalidade não são associadas. Somente o sotaque varia.
-    const value = random();
-    if (!Number.isFinite(value) || value < 0 || value >= 1) throw new Error('Falha ao gerar o sotaque. Tente novamente.');
-    let index = Math.floor(value * SOTAQUES.length);
-    if (previous?.accent === SOTAQUES[index]) index = (index + 1) % SOTAQUES.length;
-    accent = SOTAQUES[index];
+    // Perfis com sotaque explícito não sorteiam outra região.
+    if (profile.fixedAccent) accent = profile.fixedAccent;
+    else {
+      const value = random();
+      if (!Number.isFinite(value) || value < 0 || value >= 1) throw new Error('Falha ao gerar o sotaque. Tente novamente.');
+      let index = Math.floor(value * SOTAQUES.length);
+      if (previous?.accent === SOTAQUES[index]) index = (index + 1) % SOTAQUES.length;
+      accent = SOTAQUES[index];
+    }
     text = compact(`${identity.fruta ? `Personagem: ${identity.fruta}. ` : ''}${identity.sexo ? `Voz ${identity.sexo === 'Feminino' ? 'feminina' : 'masculina'}. ` : ''}Perfil ${label.toLowerCase()}. Falar exclusivamente em português brasileiro nativo (pt-BR), com sotaque ${accent.replace(/\.$/,'')}, ${profile.accentStyle || 'bem marcado e reconhecível'}. Timbre ${profile.timbre}; entonação ${profile.intonation}; ritmo ${profile.rhythm}. ${profile.voiceDirection || 'Interpretação caricata e cômica, com exagero vocal ligado ao perfil, contrastes de entonação e pausas expressivas. Manter voz consistente e fala compreensível.'}`);
   }
   return {...identity, mode, profileId, label, text, accent};
