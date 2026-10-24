@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script><script type="module" src="lapidacao.js"></script><script type="module" src="hiper-realista.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#285b43"><title>Frutas IA · Gerador de personagens</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍓%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script><script type="module" src="lapidacao.js"></script><script type="module" src="hiper-realista.js"></script><script type="module" src="fruit-combobox.js"></script></head>
 <body><header><a href="./" class="brand">🍓 <span>Frutas IA</span></a><span class="badge">ESTÚDIO DE PERSONAGENS</span></header>
 <main><section class="intro"><span class="eyebrow">DA FRUTA À IMAGINAÇÃO</span><h1>Seu próximo personagem<br>começa aqui<span>.</span></h1><p>Escolha os detalhes. Dê personalidade à sua fruta.<br>Gere um prompt completo para sua próxima criação.</p><div class="chips"><span>✦ Mestres 3.0 e 3.1</span><span>Texto original preservado</span></div></section>
 <nav class="generator-nav" aria-label="Geradores de personagens"><a href="#criar-personagem">Criar Personagem · Mestres 3.0 e 3.1</a><a href="#adaptar-personagem">Adaptar Personagem Existente</a><a href="#personagem-hiper-realista">Personagem Fruta Hiper-realista</a></nav>
@@ -38,7 +38,13 @@
 <p class="hint" id="hyper-photo-instructions">Anexe manualmente uma fotografia humana ao Google Flow e use-a com o prompt gerado. Este site produz somente texto.</p>
 <form id="hyper-form" aria-describedby="hyper-photo-instructions">
 <div class="form-grid">
-<label class="wide" for="hyper-fruit">Fruta<input id="hyper-fruit" name="hyper-fruit" required placeholder="Ex.: morango" autocomplete="off"></label>
+<div class="wide fruit-combobox" id="hyper-fruit-combobox">
+<label for="hyper-fruit">Fruta</label>
+<input id="hyper-fruit" name="hyper-fruit" required placeholder="Selecione ou digite uma fruta" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" aria-controls="hyper-fruit-list" aria-describedby="hyper-fruit-help">
+<div id="hyper-fruit-list" class="fruit-options" role="listbox" aria-label="Sugestões de frutas" hidden></div>
+<small id="hyper-fruit-help">Selecione uma sugestão ou digite qualquer outra fruta.</small>
+<span id="hyper-fruit-status" class="visually-hidden" role="status" aria-live="polite"></span>
+</div>
 <label for="hyper-sex">Sexo<select id="hyper-sex" name="hyper-sex" required><option value="">Selecione</option><option value="Feminino">Feminino</option><option value="Masculino">Masculino</option></select></label>
 <label for="hyper-body">Tipo de corpo<select id="hyper-body" name="hyper-body"><option value="" selected>Não especificar</option><option value="Magro">Magro</option><option value="Médio">Médio</option><option value="Gordo">Gordo</option><option value="Musculoso">Musculoso</option></select></label>
 </div><p class="hint">Com “Não especificar”, nenhuma instrução adicional de biotipo é inserida. O prompt desta categoria permanece em português.</p>

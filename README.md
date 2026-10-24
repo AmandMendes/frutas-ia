@@ -77,6 +77,10 @@ Os dois resultados desta categoria são em português, conforme o material ofici
 
 Os testes adicionais cobrem a integridade do original, inserções autorizadas, omissão do biotipo, listas e limites dos sorteios, timbres por sexo, não repetição consecutiva, compartilhamento de identidade e independência dos resultados. A interface foi validada em Chromium nas larguras de 1280, 390 e 320 pixels, sem erros de JavaScript ou transbordamento horizontal. O teste de navegador cobre também os modos anteriores, cópia, compartilhamento e manutenção da ficha. Para reproduzir, instale o Playwright para Python e o Chromium e execute `python tests/browser-hyper.py`; se utilizar um Chromium do sistema, informe o caminho com `BROWSER_EXECUTABLE_PATH=/usr/bin/chromium`. Essas ferramentas são apenas de desenvolvimento e não são necessárias no site publicado.
 
+### Campo híbrido de fruta hiper-realista
+
+O campo “Fruta” aceita seleção entre 25 sugestões ou qualquer nome digitado, como “Rambutã”. A pesquisa ignora maiúsculas e acentos e encontra trechos do nome (“mora” sugere “Morango”). Clique ou toque para abrir; use ↑/↓ e Enter para selecionar, Escape para fechar e Tab para seguir. Sem sugestão ativa, Enter mantém o texto livre e gera normalmente. A seleção emite os mesmos eventos do campo anterior, preservando o compartilhamento com personalidade e voz. O componente é local, sem bibliotecas ou serviços externos. Os testes de filtragem e integração ficam em `tests/fruit-combobox.test.js`. Para reproduzir a seleção com mouse/toque, teclado e os testes de compartilhamento em 1280, 390 e 320 pixels, execute `BROWSER_EXECUTABLE_PATH=/usr/bin/chromium python tests/browser-fruit-combobox.py` com Playwright para Python e Chromium instalados.
+
 ## Modelo e idioma
 
 O Prompt Mestre 3.0 está integralmente em `PROMPT_MESTRE_V3`, em `prompt-mestre.js`. Incluímos exatamente o texto fornecido, com o prefixo `[PROMPT MESTRE 3.0:`, o colchete final e os espaços duplos. A cópia de referência em `prompt-mestre-original.txt` permite conferir sua integridade. Somente os oito marcadores são substituídos, em uma única passagem. Todas as ocorrências de `[FRUIT]` são preenchidas.
